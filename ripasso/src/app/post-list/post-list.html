@@ -1,1 +1,10 @@
-<p>post-list works!</p>
+<div class="container mt-4">
+  <h2>Lista Post</h2>
+  <ul class="list-group">
+    <li *ngFor="let post of posts" class="list-group-item">
+      <a [routerLink]="['/post', post.id]">{{ post.titolo }}</a>
+      <small class="text-muted"> - {{ post.autore }}</small>
+    </li>
+  </ul>
+  <a class="btn btn-primary mt-3" routerLink="/new">➕ Nuovo Post</a>
+</div>

@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PostService, Post } from '../services/post';
 
 @Component({
   selector: 'app-post-detail',
-  imports: [],
-  templateUrl: './post-detail.html',
-  styleUrl: './post-detail.css'
+  templateUrl: './post-detail.component.html'
 })
-export class PostDetail {
+export class PostDetailComponent {
+  post?: Post;
 
+  constructor(private route: ActivatedRoute, private postService: PostService) {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.post = this.postService.getPostById(id);
+  }
 }
